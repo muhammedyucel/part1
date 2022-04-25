@@ -5,6 +5,8 @@ package part1;
 
 import java.util.ArrayList;
 
+import com.google.common.primitives.Booleans;
+
 public class App {
     public String getGreeting() {
         return "Hello world.";
@@ -16,15 +18,16 @@ public class App {
 
     public static boolean search(ArrayList<Integer> array, int e) {
         System.out.println("Inside Search");
-        if (array == null)
+        if (array == null) {
             return false;
+        }
 
         for (int elt : array) {
             if (elt == e) {
                 return true;
             }
-
         }
         return false;
     }
+
 }

@@ -38,8 +38,9 @@ class AppTest {
     }
 
     @Test
-    public void testNullArray() {
+    public void testNull() {
         assertFalse(App.search(null, 1));
         // assertTrue(App.search(null, 1));
     }
+
 }
