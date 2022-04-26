@@ -26,6 +26,9 @@ public class App {
         Logger logger = LogManager.getLogger(App.class);
         logger.error("Hello worldd");
 
+        int port = Integer.parseInt(System.getenv("PORT"));
+        logger.error("Current port number: " + port);
+
         get("/", (req, res) -> "Hello world");
         get("/compute",
                 (rq, rs) -> {
