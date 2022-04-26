@@ -22,6 +22,7 @@ public class App {
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
 
+        // hataları detaylı olarak gösteriyor bu logger kütüphanesi
         Logger logger = LogManager.getLogger(App.class);
         logger.error("Hello worldd");
 
