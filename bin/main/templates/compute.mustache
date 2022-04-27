@@ -15,10 +15,11 @@ Result is {{result}}
 			<form action="compute" method="post">		
 			
 				<label>Yenilen Kalori:</label>
-                <br><textarea name="kalori" rows="3" cols="20" placeholder="Yenilen Kaloriyi Giriniz"></textarea>
+                <br><textarea name="kaloriler" rows="3" cols="20" placeholder="Yenilen Kaloriyi Giriniz"></textarea>
 				<p><label>Boy:    			<input name="boy" placeholder="Boyunuzu Giriniz"></label></p>
 				<p><label>Kilo:   			<input name="kilo" placeholder="Kilonuzu Giriniz"></label> </p>
 				<p><label>Yaş:    			<input name="yas" placeholder="Yaşınızı Giriniz"></label></p>
 							
 				<input type ="submit" value="Hesapla">
 			</form>
+            <p>sonuç : {{result}}</p>

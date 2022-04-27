@@ -42,21 +42,28 @@ public class App {
                 new MustacheTemplateEngine());
 
         post("/compute", (req, res) -> {
-            String input1 = req.queryParams("input1");
-            java.util.Scanner sc1 = new java.util.Scanner(input1);
+            String kaloriler = req.queryParams("kaloriler");
+            java.util.Scanner sc1 = new java.util.Scanner(kaloriler);
             sc1.useDelimiter("[;\r\n]+");
-            java.util.ArrayList<Integer> inputList = new java.util.ArrayList<>();
+            java.util.ArrayList<Integer> kalorilerList = new java.util.ArrayList<>();
             while (sc1.hasNext()) {
                 int value = Integer.parseInt(sc1.next().replaceAll("\\s", ""));
-                inputList.add(value);
+                kalorilerList.add(value);
 
             }
             sc1.close();
-            System.out.println(inputList);
+            System.out.println(kalorilerList);
 
-            String input2 = req.queryParams("input2").replaceAll("\\s", "");
-            int input2AsaInt = Integer.parseInt(input2);
-            boolean result = App.search(inputList, input2AsaInt);
+            String yas = req.queryParams("yas").replaceAll("\\s", "");
+            int yasAsaInt = Integer.parseInt(yas);
+
+            String boy = req.queryParams("boy").replaceAll("\\s", "");
+            int boyAsaInt = Integer.parseInt(boy);
+
+            String kilo = req.queryParams("kilo").replaceAll("\\s", "");
+            int kiloAsaInt = Integer.parseInt(kilo);
+
+            boolean result = App.kaloriKontrol(kalorilerList, boyAsaInt, yasAsaInt, kiloAsaInt);
             Map<String, Boolean> map = new HashMap<String, Boolean>();
             map.put("result", result);
             return new ModelAndView(map, "compute.mustache");
@@ -66,17 +73,22 @@ public class App {
 
     }
 
-    public static boolean search(ArrayList<Integer> array, int e) {
+    public static boolean kaloriKontrol(ArrayList<Integer> array, int boy, int yas, int kilo) {
         System.out.println("Inside Search");
-        if (array == null) {
-            return false;
+
+        int toplam = 0, kalori = 0;
+        for (int i : array) {
+            toplam += i;
         }
 
-        for (int elt : array) {
-            if (elt == e) {
-                return true;
-            }
+        kalori = (int) (10 * kilo + 6.25 * boy - 5 * yas + 5);
+
+        if (toplam > kalori) {
+            return false; // * gerekenden fazla kalori
+        } else if (toplam == kalori && kalori > toplam) {
+            return true;
         }
+
         return false;
     }
 
