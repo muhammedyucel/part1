@@ -85,7 +85,8 @@ public class App {
 
         if (toplam > kalori) {
             return false; // * gerekenden fazla kalori
-        } else if (toplam == kalori && kalori > toplam) {
+        }
+        if (toplam == kalori || kalori > toplam) {
             return true;
         }
 
