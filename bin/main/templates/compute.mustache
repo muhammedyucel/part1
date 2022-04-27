@@ -11,12 +11,14 @@ Result is {{result}}
 
 
 <h2>Kalori Hesaplama Formu</h2>
-			<form action="compute" method="post">
-                <p><label>Yenilen Kalori:	<textarea name="input1" placeholder="Yenilen Kaloriyi Giriniz"></label></p>			
+			<h2>Kalori Hesaplama Formu</h2>
+			<form action="compute" method="post">		
+			
+				<label>Yenilen Kalori:</label>
+                <br><textarea name="kalori" rows="3" cols="20" placeholder="Yenilen Kaloriyi Giriniz"></textarea>
 				<p><label>Boy:    			<input name="boy" placeholder="Boyunuzu Giriniz"></label></p>
 				<p><label>Kilo:   			<input name="kilo" placeholder="Kilonuzu Giriniz"></label> </p>
 				<p><label>Yaş:    			<input name="yas" placeholder="Yaşınızı Giriniz"></label></p>
 							
-				
-				<input type="submit" value="Yolla">				
-			</form>	
+				<input type ="submit" value="Hesapla">
+			</form>
