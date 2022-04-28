@@ -77,17 +77,19 @@ public class App {
         System.out.println("Inside Search");
 
         int toplam = 0, kalori = 0;
-        for (int i : array) {
-            toplam += i;
-        }
+        if (array != null) {
+            for (int i : array) {
+                toplam += i;
+            }
 
-        kalori = (int) (10 * kilo + 6.25 * boy - 5 * yas + 5);
+            kalori = (int) (10 * kilo + 6.25 * boy - 5 * yas + 5);
 
-        if (toplam > kalori) {
-            return false; // * gerekenden fazla kalori
-        }
-        if (toplam == kalori || kalori > toplam) {
-            return true;
+            if (toplam > kalori) {
+                return false; // * gerekenden fazla kalori
+            }
+            if (toplam == kalori || kalori > toplam) {
+                return true;
+            }
         }
 
         return false;

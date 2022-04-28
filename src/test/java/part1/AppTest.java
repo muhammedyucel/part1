@@ -16,31 +16,43 @@ class AppTest {
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
 
-    // @Test
-    // public void testFound() {
-    // // Girilen eleman arrayde mevcut. Bu fonksiyon true dönmeli
-    // ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-    // assertTrue(App.search(array, 4));
-    // }
+    @Test
+    public void testDogru() {
+        // Girilen elemanlar 0'dan büyük ve array boş değilse true dönder
+        ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+        int boy = 187, kilo = 87, yas = 22;
+        assertTrue(App.kaloriKontrol(array, boy, yas, kilo));
 
-    // @Test
-    // public void testNotFound() {
-    // // Girilen eleman arrayde mevcut değil . Bu fonksiyon false dönmeli
-    // ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-    // assertFalse(App.search(array, 5));
-    // }
+    }
 
-    // @Test
-    // public void testEmptyArray() {
-    // // Array boş. aranan her eleman sonucunda false dönecek
-    // ArrayList<Integer> array = new ArrayList<>();
-    // assertFalse(App.search(array, 1));
-    // }
+    @Test
+    public void testNotFound() {
+        int boy = 0, kilo = 0, yas = 0;
+        // Girilen elemanlar 0'dan küçük ise false değeri dönderecek
+        ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
 
-    // @Test
-    // public void testNull() {
-    // assertFalse(App.search(null, 1));
-    // // assertTrue(App.search(null, 1));
-    // }
+        if (boy < 0 || kilo < 0 || yas < 0) {
+            assertFalse(App.kaloriKontrol(array, boy, yas, kilo));
+
+        }
+    }
+
+    // arrayin boşluğunu kontrol eden test
+    @Test
+    public void testBosArray() {
+        int boy = 187;
+        int kilo = 87;
+        int yas = 22;
+        ArrayList<Integer> array = new ArrayList<>();
+
+        assertTrue(App.kaloriKontrol(array, boy, yas, kilo));
+    }
+
+    @Test
+    public void testNull() {
+        int boy = 0, kilo = 0, yas = 0;
+        assertFalse(App.kaloriKontrol(null, boy, yas, kilo));
+
+    }
 
 }
