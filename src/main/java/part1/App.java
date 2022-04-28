@@ -88,7 +88,7 @@ public class App {
                 return false; // * gerekenden fazla kalori
             }
             if (toplam == kalori || kalori > toplam) {
-                System.out.println("içine girdi");
+
                 return true;
             }
         }
