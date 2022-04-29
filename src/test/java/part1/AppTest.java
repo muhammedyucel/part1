@@ -45,7 +45,7 @@ class AppTest {
         int yas = 22;
         ArrayList<Integer> array = new ArrayList<>();
 
-        assertFalse(App.kaloriKontrol(array, boy, yas, kilo));
+        assertTrue(App.kaloriKontrol(array, boy, yas, kilo));
     }
 
     @Test
