@@ -32,7 +32,7 @@ public class App {
         port(port);
         logger.error("Current port number: " + port);
 
-        get("/", (req, res) -> "Hello world"); // (requast,result)
+        get("/", (req, res) -> "Hello world"); // sayfa çalıştırılmadan önce ilk sayfa hello world olarak gelecek
         get("/compute", // spark içindeki url
                 (rq, rs) -> {
                     Map<String, String> map = new HashMap<String, String>();
@@ -115,6 +115,10 @@ public class App {
             if (toplam == kalori || kalori > toplam) {
 
                 return true;
+            }
+            // herhangi bir değer 0'dan küçük girildiği zaman false değeri gönderecektir.
+            if (boy <= 0 && kilo <= 0 && yas <= 0) {
+                return false;
             }
         }
 
