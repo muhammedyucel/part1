@@ -92,7 +92,7 @@ public class App {
 
                 return true;
             }
-        } else {
+        } else if (array == null) {
             return false;
 
         }
