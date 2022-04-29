@@ -73,6 +73,7 @@ public class App {
 
     }
 
+    // bir array oluşturuluyor içine integer dört tane değer alıyor
     public static boolean kaloriKontrol(ArrayList<Integer> array, int boy, int yas, int kilo) {
         System.out.println("Inside Search");
 
@@ -91,6 +92,9 @@ public class App {
 
                 return true;
             }
+        } else {
+            return false;
+
         }
 
         return false;
