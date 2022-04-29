@@ -32,21 +32,34 @@ public class App {
         port(port);
         logger.error("Current port number: " + port);
 
-        get("/", (req, res) -> "Hello world");
-        get("/compute",
+        get("/", (req, res) -> "Hello world"); // (requast,result)
+        get("/compute", // spark içindeki url
                 (rq, rs) -> {
                     Map<String, String> map = new HashMap<String, String>();
                     map.put("result", "not compute.mustache");
-                    return new ModelAndView(map, "compute.mustache");
+                    return new ModelAndView(map, "compute.mustache"); // result ettiğimizde bize compute.mustache'yi
+                                                                      // getirecek
+
                 },
+
+                // browserdeki görselleri görebilmek için yazdığımız method
+                // beklediğimiz result değerini alacağız
                 new MustacheTemplateEngine());
 
+        // http post methodu yapıyoruz
         post("/compute", (req, res) -> {
+            // Kalorileri string olarak aldık
             String kaloriler = req.queryParams("kaloriler");
+
+            // klavyeden değerleri alacak
             java.util.Scanner sc1 = new java.util.Scanner(kaloriler);
+
+            // boşluk vs gibi ayırma işlemini yapacak
             sc1.useDelimiter("[;\r\n]+");
             java.util.ArrayList<Integer> kalorilerList = new java.util.ArrayList<>();
             while (sc1.hasNext()) {
+
+                // extra karakterler girildiğinde onları temizliyor
                 int value = Integer.parseInt(sc1.next().replaceAll("\\s", ""));
                 kalorilerList.add(value);
 
@@ -54,6 +67,7 @@ public class App {
             sc1.close();
             System.out.println(kalorilerList);
 
+            // bunlarda da sadece bir tane girdi alıyor
             String yas = req.queryParams("yas").replaceAll("\\s", "");
             int yasAsaInt = Integer.parseInt(yas);
 
@@ -63,9 +77,15 @@ public class App {
             String kilo = req.queryParams("kilo").replaceAll("\\s", "");
             int kiloAsaInt = Integer.parseInt(kilo);
 
+            // fonksiyonumuza değerleri
             boolean result = App.kaloriKontrol(kalorilerList, boyAsaInt, yasAsaInt, kiloAsaInt);
+
+            // ilk değeri string çünkü result değerini alıyor ve sonucu da true ya da false
+            // olarak veriyor
             Map<String, Boolean> map = new HashMap<String, Boolean>();
             map.put("result", result);
+
+            // kontolleri görsel olarak çalıştırmayı sağlıyor
             return new ModelAndView(map, "compute.mustache");
 
         },
@@ -75,26 +95,27 @@ public class App {
 
     // bir array oluşturuluyor içine integer dört tane değer alıyor
     public static boolean kaloriKontrol(ArrayList<Integer> array, int boy, int yas, int kilo) {
-        System.out.println("Inside Search");
 
         int toplam = 0, kalori = 0;
+        // arrayin içi boş değilse bu işlemleri yapacak
         if (array != null) {
+            // arrayın içindeki integer değerleri toplayacak ve toplam değişkenine atayacak
             for (int i : array) {
                 toplam += i;
             }
-
+            // girilen değerlerden kalori adlı değişkenin formülü hesaplanacak
             kalori = (int) (10 * kilo + 6.25 * boy - 5 * yas + 5);
 
+            // eğer toplam değeri kalori değerinden büyükse false değeri dönederecek
             if (toplam > kalori) {
                 return false; // * gerekenden fazla kalori
             }
+            // eğer toplam değeri kaloriye eşit veya kaloriden küçükse true değeri
+            // dönderecektir.
             if (toplam == kalori || kalori > toplam) {
 
                 return true;
             }
-        } else if (array == null) {
-            return false;
-
         }
 
         return false;

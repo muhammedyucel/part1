@@ -21,6 +21,9 @@ class AppTest {
         // Girilen elemanlar 0'dan büyük ve array boş değilse true dönder
         ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
         int boy = 187, kilo = 87, yas = 22;
+        if (array != null || boy > 0 || yas > 0 || kilo > 0) {
+            assertTrue(App.kaloriKontrol(array, boy, yas, kilo));
+        }
         assertTrue(App.kaloriKontrol(array, boy, yas, kilo));
 
     }
@@ -31,7 +34,7 @@ class AppTest {
         // Girilen elemanlar 0'dan küçük ise false değeri dönderecek
         ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
 
-        if (boy < 0 || kilo < 0 || yas < 0) {
+        if (boy <= 0 || kilo <= 0 || yas <= 0) {
             assertFalse(App.kaloriKontrol(array, boy, yas, kilo));
 
         }
@@ -48,6 +51,7 @@ class AppTest {
         assertTrue(App.kaloriKontrol(array, boy, yas, kilo));
     }
 
+    // Hepsi boş bırakıldığı zaman false değeri döndürecektir.
     @Test
     public void testNull() {
         int boy = 0, kilo = 0, yas = 0;
