@@ -106,6 +106,11 @@ public class App {
             // girilen değerlerden kalori adlı değişkenin formülü hesaplanacak
             kalori = (int) (10 * kilo + 6.25 * boy - 5 * yas + 5);
 
+            // herhangi bir değer 0'dan küçük girildiği zaman false değeri gönderecektir.
+            if (boy <= 0 && kilo <= 0 && yas <= 0) {
+                return false;
+            }
+
             // eğer toplam değeri kalori değerinden büyükse false değeri dönederecek
             if (toplam > kalori) {
                 return false; // * gerekenden fazla kalori
@@ -116,10 +121,7 @@ public class App {
 
                 return true;
             }
-            // herhangi bir değer 0'dan küçük girildiği zaman false değeri gönderecektir.
-            if (boy <= 0 && kilo <= 0 && yas <= 0) {
-                return false;
-            }
+
         }
 
         return false;

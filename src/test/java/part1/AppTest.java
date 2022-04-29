@@ -34,7 +34,7 @@ class AppTest {
         // Girilen elemanlar 0'dan küçük ise false değeri dönderecek
         ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
 
-        if (boy <= 0 || kilo <= 0 || yas <= 0) {
+        if (boy <= 0 && kilo <= 0 && yas <= 0) {
             assertFalse(App.kaloriKontrol(array, boy, yas, kilo));
 
         }
