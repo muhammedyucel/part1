@@ -109,19 +109,24 @@ public class App {
             // herhangi bir değer 0'dan küçük girildiği zaman false değeri gönderecektir.
             if (boy <= 0 && kilo <= 0 && yas <= 0) {
                 return false;
+            } else {
+
+                // eğer toplam değeri kalori değerinden büyükse false değeri dönederecek
+                if (toplam > kalori) {
+                    return false; // * gerekenden fazla kalori
+                }
+                // eğer toplam değeri kaloriye eşit veya kaloriden küçükse true değeri
+                // dönderecektir.
+                if (toplam == kalori || kalori > toplam) {
+
+                    return true;
+                }
+
             }
 
-            // eğer toplam değeri kalori değerinden büyükse false değeri dönederecek
-            if (toplam > kalori) {
-                return false; // * gerekenden fazla kalori
-            }
-            // eğer toplam değeri kaloriye eşit veya kaloriden küçükse true değeri
-            // dönderecektir.
-            if (toplam == kalori || kalori > toplam) {
-
-                return true;
-            }
-
+        }
+        if (array == null) {
+            return false;
         }
 
         return false;
