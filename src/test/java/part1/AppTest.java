@@ -29,7 +29,19 @@ class AppTest {
     }
 
     @Test
-    public void testNotFound() {
+    public void testPozitifDeger() {
+        int boy = 1, kilo = 1, yas = 1;
+        // Girilen elemanlar 0'dan küçük ise false değeri dönderecek
+        ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+
+        if (boy >= 0 && kilo >= 0 && yas >= 0) {
+            assertTrue(App.kaloriKontrol(array, boy, yas, kilo));
+
+        }
+    }
+
+    @Test
+    public void testNegatifDeger() {
         int boy = -1, kilo = -1, yas = -1;
         // Girilen elemanlar 0'dan küçük ise false değeri dönderecek
         ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));

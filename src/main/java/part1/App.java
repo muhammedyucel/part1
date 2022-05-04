@@ -77,7 +77,7 @@ public class App {
             String kilo = req.queryParams("kilo").replaceAll("\\s", "");
             int kiloAsaInt = Integer.parseInt(kilo);
 
-            // fonksiyonumuza değerleri
+            // fonksiyonumuza değerleri ekliyoruz.
             boolean result = App.kaloriKontrol(kalorilerList, boyAsaInt, yasAsaInt, kiloAsaInt);
 
             // ilk değeri string çünkü result değerini alıyor ve sonucu da true ya da false
@@ -109,14 +109,16 @@ public class App {
             // herhangi bir değer 0'dan küçük girildiği zaman false değeri gönderecektir.
             if (boy <= 0 && kilo <= 0 && yas <= 0) {
                 return false;
-            } else {
+            }
+            // eğer bütün değerler girildiyse bu blok çalışacak
+            else {
 
                 // eğer toplam değeri kalori değerinden büyükse false değeri dönederecek
                 if (toplam > kalori) {
                     return false; // * gerekenden fazla kalori
                 }
                 // eğer toplam değeri kaloriye eşit veya kaloriden küçükse true değeri
-                // dönderecektir.
+                // döndürecektir.
                 if (toplam == kalori || kalori > toplam) {
 
                     return true;
@@ -125,6 +127,7 @@ public class App {
             }
 
         }
+        // eğer array boş ise false değeri dönerecektir
         if (array == null) {
             return false;
         }
